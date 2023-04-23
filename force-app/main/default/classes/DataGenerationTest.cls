@@ -9,7 +9,7 @@ private class DataGenerationTest {
       opp.AccountId = account.Id;
       opp.CloseDate = Date.today().addDays(14);
       opp.StageName = 'Prospecting';
-      insert opp;
+      insert opp; //my comment
   }
   @isTest
   static void testBruteForceAccountCreation() {
