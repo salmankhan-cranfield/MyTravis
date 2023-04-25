@@ -19,7 +19,7 @@ before_install:
 - sfdx plugins --core
 
 script:
-  - openssl aes-256-cbc -K "${myKey}" -in assets/encserver.key.enc -out assets/server.key -d 
+  - openssl aes-256-cbc -K $myKey -in assets/encserver.key.enc -out assets/server.key -d 
   - sfdx force:auth:jwt:grant --clientid $CONSUMERKEY \
         --username $USERNAME \
         --jwtkeyfile assets/server.key --setalias khan100 \
