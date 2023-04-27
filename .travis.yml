@@ -18,11 +18,8 @@ before_install:
 - sfdx --version
 - sfdx plugins --core
 script:
-- sfdx force:auth:jwt:grant --clientid $CONSUMERKEY \ --username $USERNAME \ --jwtkeyfile
-  assets/server.key --setalias khan100 \ --instanceurl https://login.salesforce.com/;
-  if [ "$TRAVIS_BRANCH" == "INT" ] && [ "$TRAVIS_PULL_REQUEST" ! = "false" ]; then
-  sfdx force:source:deploy -p ./force-app -u target_org --checkonly; else sfdx force:source:deploy
-  -p ./force-app -u target_org;
+- sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --username $USERNAME --jwtkeyfile assets/server.key --setalias target_org --instanceurl https://login.salesforce.com/
+- sfdx force:source:deploy -p ./force-app -u target_org --checkonly
 branches:
   only:
   - INT
